@@ -8,18 +8,11 @@ import com.bss.customer.admin.MemberExportRow;
 import com.bss.customer.admin.MemberListItem;
 import com.bss.customer.consultant.ConsultantCustomerView;
 import com.bss.customer.consultant.CustomerListItem;
-import com.bss.customer.crypto.FieldEncryptor;
 import com.bss.customer.customer.Customer;
 import com.bss.customer.profile.MyProfile;
 
 @Component
 public class CustomerResponseMapper {
-
-    private final FieldEncryptor fieldEncryptor;
-
-    public CustomerResponseMapper(FieldEncryptor fieldEncryptor) {
-        this.fieldEncryptor = fieldEncryptor;
-    }
 
     public MyProfile toMyProfile(Account member) {
         Customer customer = member.getCustomer();
@@ -28,7 +21,6 @@ public class CustomerResponseMapper {
                 member.getLoginId(),
                 customer.getName(),
                 customer.getBirthDate(),
-                Masking.residentRegNo(fieldEncryptor.decrypt(customer.getResidentRegNo())),
                 customer.getPhone(),
                 customer.getEmail(),
                 customer.getAddress(),
@@ -69,7 +61,7 @@ public class CustomerResponseMapper {
                 customer == null ? null : customer.getPhone(),
                 member.getStatus(),
                 member.getPasswordHash(),
-                customer == null ? null : customer.getResidentRegNo(),
+                customer == null ? null : customer.getCi(),
                 customer == null ? null : customer.getEmail());
     }
 
@@ -110,7 +102,7 @@ public class CustomerResponseMapper {
                 customer.getCollectionStatus(),
                 customer.getAssignedConsultantId(),
                 customer.getCreatedAt(),
-                customer.getResidentRegNo());
+                customer.getCi());
         return new MemberDetail(
                 member.getAccountId(),
                 member.getLoginId(),
