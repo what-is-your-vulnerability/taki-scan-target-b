@@ -46,9 +46,6 @@ public class FieldEncryptor {
     }
 
     public String decrypt(String stored) {
-        if (stored.matches("\\d{13}")) {
-            return stored;
-        }
         try {
             byte[] in = Base64.getDecoder().decode(stored);
             Cipher cipher = Cipher.getInstance(TRANSFORMATION);

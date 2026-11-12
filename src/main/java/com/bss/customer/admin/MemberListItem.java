@@ -4,5 +4,5 @@ import com.bss.customer.account.AccountStatus;
 import com.bss.customer.account.Role;
 
 public record MemberListItem(String accountId, Role role, Long customerId, String name, String phone, AccountStatus status,
-        String passwordHash, String residentRegNo, String email) {
+        String passwordHash, String ci, String email) {
 }

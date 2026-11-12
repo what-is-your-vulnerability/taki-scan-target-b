@@ -28,6 +28,6 @@ public record MemberDetail(
             String collectionStatus,
             String assignedConsultantId,
             Instant createdAt,
-            String residentRegNo) {
+            String ci) {
     }
 }
